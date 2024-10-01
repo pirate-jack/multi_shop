@@ -29,13 +29,13 @@ class ProfilePage extends StatelessWidget {
     if (token == null) {
       return LoginPage();
     }
-    if(user!.verification == false){
+    if (user!.verification == false) {
       return VerificationPage();
     }
     return Scaffold(
       backgroundColor: kPrimary,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(40.h), child: ProfileAppBar()),
+          preferredSize: Size.fromHeight(75.h), child: ProfileAppBar()),
       body: SafeArea(
         child: CustomContainer(
           containerContent: Column(
@@ -56,9 +56,7 @@ class ProfilePage extends StatelessWidget {
                         ProfileTileWidget(
                           title: "My Orders",
                           icon: Ionicons.fast_food_outline,
-                          onTap: () {
-
-                          },
+                          onTap: () {},
                         ),
                         ProfileTileWidget(
                           title: "My Favorite Place",
@@ -123,7 +121,13 @@ class ProfilePage extends StatelessWidget {
                     color: kRed,
                   )
                 ],
-              )
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                ),
+              ),
             ],
           ),
         ),

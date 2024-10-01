@@ -8,17 +8,16 @@ import 'package:http/http.dart' as http;
 import 'package:multi_shop/constants/constants.dart';
 import 'package:multi_shop/models/api_error.dart';
 import 'package:multi_shop/models/login_response.dart';
-import 'package:multi_shop/view/entry_point.dart';
 
-class VerificationController extends GetxController {
+class PhoneVerificationController extends GetxController {
   final box = GetStorage();
 
-  String _code = "";
+  String _phone = "";
 
-  String get code => _code;
+  String get phone => _phone;
 
-  set setCode(String value) {
-    _code = value.trim();
+  set setPhone(String value) {
+    _phone = value.trim();
   }
 
   RxBool _isLoading = false.obs;
@@ -29,13 +28,13 @@ class VerificationController extends GetxController {
     _isLoading.value = value;
   }
 
-  void verificationFunction() async {
+  void verifyPhone() async {
     setLoading = true;
     String accessToken = box.read("token") ?? "";
-    debugPrint("Verification code: $_code");
+    debugPrint("Verification code: $_phone");
     debugPrint("Verification Token: $accessToken");
 
-    if (_code.isEmpty) {
+    if (_phone.isEmpty) {
       Get.snackbar("Error", "Please enter a valid verification code.",
           colorText: kLightWhite,
           backgroundColor: kPrimary,
@@ -44,7 +43,7 @@ class VerificationController extends GetxController {
       return;
     }
 
-    Uri url = Uri.parse("$appBaseUrl/api/users/verify/$_code");
+    Uri url = Uri.parse("$appBaseUrl/api/users/verify-phone/$_phone");
     Map<String, String> headers = {
       'Content-type': 'application/json',
       'Authorization': 'Bearer $accessToken'
@@ -63,12 +62,11 @@ class VerificationController extends GetxController {
         box.write("userId", data.id);
         box.write("verification", data.verification);
 
-
         Get.snackbar("You are successfully Verified", "Done!",
             colorText: kLightWhite,
             backgroundColor: kPrimary,
             icon: Icon(Ionicons.fast_food_outline, color: kWhite));
-        Get.off(() => MainScreen());
+        Get.back();
       } else if (response.statusCode == 404) {
         Get.snackbar("User Not Found", "No user exists with the provided code.",
             colorText: kLightWhite,

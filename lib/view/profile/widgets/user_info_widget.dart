@@ -33,7 +33,7 @@ class UserInfoWidget extends StatelessWidget {
                     child: ClipOval(
                         // Clip to a circle shape
                         child: Image.network(
-                      user!.profile,
+                      user!.profile ?? "",
                       fit: BoxFit.cover,
                     )),
                   ),

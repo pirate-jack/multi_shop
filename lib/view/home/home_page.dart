@@ -16,7 +16,6 @@ import 'package:multi_shop/view/home/widgets/nearby_restarunt_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(CategoryController());
@@ -26,7 +25,7 @@ class HomePage extends StatelessWidget {
         preferredSize: Size.fromHeight(130.h),
         child: Container(
           child: CustomAppbar(),
-          height: 130,
+          height: 135,
         ),
       ),
       body: SafeArea(

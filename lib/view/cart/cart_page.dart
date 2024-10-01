@@ -31,27 +31,14 @@ class CartPage extends StatelessWidget {
       return VerificationPage();
     }
     return Scaffold(
-      backgroundColor: kPrimary,
+      backgroundColor: kWhite,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(130.h),
         child: Container(
           height: 130,
         ),
       ),
-      body: SafeArea(
-        child: CustomContainer(
-          containerContent: Container(
-            child: ListView(
-              children: [
-                // LottieBuilder.asset("assets/anime/food1.json",
-                //   width: width/2,
-                //   height: height/4,
-                // ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      body: CustomContainer(containerContent: Container(),),
     );
   }
 }

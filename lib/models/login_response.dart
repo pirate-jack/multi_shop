@@ -12,26 +12,26 @@ class LoginResponse {
   final String id;
   final String username;
   final String email;
-  final String otp;
-  final String fcm;
+  final String? otp;
+  final String? fcm;
   final bool verification;
   final String phone;
   final bool phoneVerification;
   final String userType;
-  final String profile;
+  final String? profile;
   final String userToken;
 
   LoginResponse({
     required this.id,
     required this.username,
     required this.email,
-    required this.otp,
-    required this.fcm,
+    this.otp,
+    this.fcm,
     required this.verification,
     required this.phone,
     required this.phoneVerification,
     required this.userType,
-    required this.profile,
+    this.profile,
     required this.userToken,
   });
 

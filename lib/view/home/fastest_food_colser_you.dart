@@ -15,7 +15,6 @@ class FastestFoodCloserYou extends HookWidget {
     final hookResults = useFetchAllFoods("394215");
     List<FoodModel>? foods = hookResults.data;
     final isLoading = hookResults.isLoading;
-
     return Scaffold(
       backgroundColor: kSecondary,
       appBar: AppBar(
